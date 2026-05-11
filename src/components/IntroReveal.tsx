@@ -120,9 +120,12 @@ export default function IntroReveal({ onComplete }: IntroRevealProps) {
         animate={{ opacity: 1 }}
         transition={{ delay: 3 }}
         onClick={onComplete}
-        className="absolute bottom-12 font-sans text-[10px] uppercase tracking-[0.5em] text-slate-400 hover:text-rose-400 transition-colors cursor-pointer"
+        className="absolute bottom-12 group cursor-pointer"
       >
-        Desliza para entrar
+        <span className="font-sans text-[10px] uppercase tracking-[0.5em] text-slate-400 group-hover:text-rose-400 transition-colors animate-shimmer bg-gradient-to-r from-slate-400 via-rose-300 to-slate-400 bg-[length:200%_auto] bg-clip-text text-transparent">
+          Toca para entrar
+        </span>
+        <div className="w-0 h-[1px] bg-rose-200 mx-auto group-hover:w-full transition-all duration-700 mt-1" />
       </motion.button>
     </div>
   );

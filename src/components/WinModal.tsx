@@ -25,7 +25,7 @@ export default function WinModal({ prize, onClose }: WinModalProps) {
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(`¡Hola! Acabo de ganar "${prize.label}" en GS Estética Integral y me gustaría reclamar mi premio. Mi nombre es ${formData.name}.`);
-    window.open(`https://wa.me/541161546312?text=${text}`, '_blank');
+    window.location.href = `https://wa.me/541161546312?text=${text}`;
   };
 
   return (
@@ -74,7 +74,7 @@ export default function WinModal({ prize, onClose }: WinModalProps) {
                       placeholder="Nombre Completo"
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full h-12 px-6 rounded-2xl bg-white/40 border border-rose-100 focus:border-rose-300 focus:ring-0 outline-none font-sans text-sm transition-all"
+                      className="w-full h-12 px-6 rounded-2xl bg-white/40 border border-rose-100 focus:border-rose-300 focus:ring-0 outline-none font-sans text-base md:text-sm transition-all"
                       required
                     />
                   </div>

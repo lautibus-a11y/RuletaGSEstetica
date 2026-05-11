@@ -23,7 +23,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="relative min-h-screen">
+    <main className="relative h-screen overflow-hidden flex flex-col items-center justify-between py-10 px-6">
       <AnimatePresence>
         {showIntro && (
           <IntroReveal onComplete={() => setShowIntro(false)} />
@@ -32,27 +32,27 @@ export default function App() {
 
       <BackgroundEffects />
 
-      <div className="container mx-auto px-6 pt-16 pb-20 flex flex-col items-center">
-        {/* Logo Fijo sobre el contenido */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="flex flex-col items-center gap-2 mb-12"
-        >
-          <div className="w-16 h-16 border border-rose-200 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md shadow-sm">
-            <span className="font-display italic text-3xl text-rose-400">GS</span>
-          </div>
-          <span className="font-sans text-[12px] font-semibold tracking-[0.5em] text-slate-700">ESTÉTICA INTEGRAL</span>
-        </motion.div>
+      {/* Logo Fijo sobre el contenido */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1 }}
+        className="flex flex-col items-center gap-1 z-20"
+      >
+        <div className="w-14 h-14 border border-rose-200 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md shadow-sm">
+          <span className="font-display italic text-2xl text-rose-400">GS</span>
+        </div>
+        <span className="font-sans text-[10px] font-semibold tracking-[0.4em] text-slate-700">ESTÉTICA INTEGRAL</span>
+      </motion.div>
 
-        {/* Contenido Hero Optimizado para Mobile */}
-        <div className="text-center mb-10 max-w-2xl">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-2xl z-10">
+        {/* Contenido Hero */}
+        <div className="text-center mb-6">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4 }}
-            className="font-display text-4xl md:text-7xl text-slate-800 mb-6 leading-tight"
+            className="font-display text-4xl md:text-6xl text-slate-800 mb-4 leading-tight"
           >
             Un Toque de <span className="italic text-rose-400">Resplandor</span>
           </motion.h2>
@@ -61,9 +61,9 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.8 }}
-            className="mb-6 inline-block px-6 py-2 bg-rose-50/50 backdrop-blur-sm rounded-full border border-rose-100"
+            className="mb-4 inline-block px-4 py-1.5 bg-rose-50/50 backdrop-blur-sm rounded-full border border-rose-100"
           >
-            <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-rose-500 font-bold">
+            <span className="font-sans text-[9px] uppercase tracking-[0.1em] text-rose-500 font-bold">
               ✨ Tu mejor versión empieza con un mimo ✨
             </span>
           </motion.div>
@@ -72,58 +72,52 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2 }}
-            className="font-display italic text-2xl md:text-3xl text-slate-700"
+            className="font-display italic text-xl md:text-2xl text-slate-700"
           >
             Gira para descubrir tu regalo
           </motion.h3>
         </div>
 
-        {/* Ruleta - Ajustada para Mobile */}
+        {/* Ruleta - Ajustada para no ocupar todo el alto */}
         <motion.section 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.2, duration: 1 }}
-          className="relative z-10 mb-20 scale-[0.95] md:scale-100"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.2, duration: 0.8 }}
+          className="relative z-10 my-4 scale-[0.8] md:scale-90 lg:scale-100"
         >
           <GlassRoulette onWin={setWinningPrize} />
         </motion.section>
-
-        {/* Sección Info Simplificada */}
-        <motion.section 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="w-full max-w-lg border-t border-rose-100 pt-12 flex flex-col items-center gap-8"
-        >
-          <div className="flex flex-col items-center text-center">
-            <h4 className="font-display text-xl text-slate-800 mb-2">Ubicación</h4>
-            <div className="flex items-center gap-2 text-slate-500">
-              <MapPin className="w-4 h-4 text-rose-300" />
-              <span className="font-sans text-sm">Visítanos y renová tu energía</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <a href="https://www.instagram.com/gs.esteticaintegral/" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/50 rounded-full border border-rose-100 hover:border-rose-300 transition-all active:scale-90">
-              <Instagram className="w-5 h-5 text-slate-600" />
-            </a>
-            <a href="#" className="p-3 bg-white/50 rounded-full border border-rose-100 hover:border-rose-300 transition-all active:scale-90">
-              <Facebook className="w-5 h-5 text-slate-600" />
-            </a>
-          </div>
-        </motion.section>
       </div>
+
+      {/* Footer Simplificado al máximo */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5 }}
+        className="w-full flex flex-col items-center gap-4 z-20"
+      >
+        <div className="flex items-center gap-6">
+          <a href="https://www.instagram.com/gs.esteticaintegral/" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/50 rounded-full border border-rose-100 hover:border-rose-300 transition-all active:scale-90">
+            <Instagram className="w-4 h-4 text-slate-600" />
+          </a>
+          <div className="flex flex-col items-center">
+            <span className="font-sans text-[8px] uppercase tracking-[0.3em] text-slate-400">
+              © 2026 GS Estética Integral
+            </span>
+            <span className="font-sans text-[7px] uppercase tracking-[0.2em] text-slate-300 mt-1">
+              Desarrollado por BroadCastweb
+            </span>
+          </div>
+          <a href="#" className="p-2.5 bg-white/50 rounded-full border border-rose-100 hover:border-rose-300 transition-all active:scale-90">
+            <Facebook className="w-4 h-4 text-slate-600" />
+          </a>
+        </div>
+      </motion.section>
 
       <WinModal 
         prize={winningPrize} 
         onClose={() => setWinningPrize(null)} 
       />
-
-      <footer className="w-full py-8 text-center bg-white/30 backdrop-blur-md">
-         <p className="font-sans text-[9px] uppercase tracking-[0.4em] text-slate-400">
-           © 2026 GS Estética Integral • Desarrollado por BroadCastweb
-         </p>
-      </footer>
     </main>
   );
 }
