@@ -5,14 +5,14 @@ import { cn } from '@/src/lib/utils';
 import { Sparkles, Gift, Heart, Star, Sparkle, Zap, Flower, Scissors } from 'lucide-react';
 
 const PRIZES = [
-  { id: 0, label: 'Lifting de pestañas + diseño de cejas ($22.000)', icon: Sparkles, color: '#fdf2f8', probability: 0.15 },
-  { id: 1, label: 'Laminado de cejas + lifting de pestañas ($27.000)', icon: Zap, color: '#fbcfe8', probability: 0.15 },
-  { id: 2, label: 'Pestañas pelo x pelo 10% OFF ($18.000)', icon: Star, color: '#fdf2f8', probability: 0.1 },
-  { id: 3, label: 'Belleza de pies + diseño de cejas ($15.000)', icon: Heart, color: '#fbcfe8', probability: 0.15 },
-  { id: 4, label: 'Limpieza con torno + semi + lifting ($27.000)', icon: Scissors, color: '#fdf2f8', probability: 0.15 },
-  { id: 5, label: 'Lifting de pestañas + diseño de cejas ($22.000)', icon: Sparkles, color: '#fbcfe8', probability: 0.1 },
-  { id: 6, label: 'Laminado de cejas + lifting de pestañas ($27.000)', icon: Zap, color: '#fdf2f8', probability: 0.1 },
-  { id: 7, label: 'Belleza de pies + diseño de cejas ($15.000)', icon: Heart, color: '#fbcfe8', probability: 0.1 },
+  { id: 0, label: 'Reflexología + limpieza de cutis + peeling ($35.000)', icon: Sparkles, color: '#fdf2f8', probability: 0.125 },
+  { id: 1, label: 'Limpieza profunda + aparatología x 2 ($36.000)', icon: Zap, color: '#fbcfe8', probability: 0.125 },
+  { id: 2, label: 'Facial + masaje relajante espalda ($35.000)', icon: Heart, color: '#fdf2f8', probability: 0.125 },
+  { id: 3, label: 'Masajes integral con reflexología ($30.000)', icon: Flower, color: '#fbcfe8', probability: 0.125 },
+  { id: 4, label: 'Dermaplaning peeling con bisturí + aparatología ($25.000)', icon: Scissors, color: '#fdf2f8', probability: 0.125 },
+  { id: 5, label: 'Pase libre aparatología corporal x zona ($30.000)', icon: Sparkle, color: '#fbcfe8', probability: 0.125 },
+  { id: 6, label: 'Facial incluye peeling + aparatología ($25.000)', icon: Star, color: '#fdf2f8', probability: 0.125 },
+  { id: 7, label: 'Lifting de pestañas + diseño de cejas ($22.000)', icon: Sparkles, color: '#fbcfe8', probability: 0.125 },
 ];
 
 function HelpCircle(props: any) {

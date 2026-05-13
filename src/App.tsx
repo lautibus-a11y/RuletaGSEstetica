@@ -52,9 +52,9 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4 }}
-            className="font-display text-4xl md:text-6xl text-slate-800 mb-4 leading-tight"
+            className="font-display text-4xl md:text-6xl text-slate-800 mb-4 leading-tight flex items-center justify-center gap-3"
           >
-            Un Toque de <span className="italic text-rose-400">Resplandor</span>
+            Ruleta <span className="italic animate-color-shift">GS</span>
           </motion.h2>
           
           <motion.div
@@ -64,7 +64,7 @@ export default function App() {
             className="mb-4 inline-block px-4 py-1.5 bg-rose-50/50 backdrop-blur-sm rounded-full border border-rose-100"
           >
             <span className="font-sans text-[9px] uppercase tracking-[0.1em] text-rose-500 font-bold">
-              ✨ Tu mejor versión empieza con un mimo ✨
+              ✨ Conecta con tu mejor version ✨
             </span>
           </motion.div>
 

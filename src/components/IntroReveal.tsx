@@ -110,7 +110,7 @@ export default function IntroReveal({ onComplete }: IntroRevealProps) {
           </h1>
           <div className="w-0 h-[1px] bg-rose-200 mx-auto line-reveal mb-4" />
           <p className="font-sans text-xs uppercase tracking-[0.3em] text-rose-400">
-            Tu belleza en buenas manos
+            Beneficios exclusivos
           </p>
         </div>
       </div>
