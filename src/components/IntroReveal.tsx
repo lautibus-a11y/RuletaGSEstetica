@@ -116,16 +116,39 @@ export default function IntroReveal({ onComplete }: IntroRevealProps) {
       </div>
 
       <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ 
+          opacity: 1, 
+          y: 0,
+          scale: [1, 1.02, 1],
+        }}
+        transition={{ 
+          delay: 3,
+          scale: {
+            repeat: Infinity,
+            duration: 3,
+            ease: "easeInOut"
+          },
+          opacity: { duration: 0.8 },
+          y: { duration: 0.8 }
+        }}
         onClick={onComplete}
-        className="absolute bottom-12 group cursor-pointer"
+        className="absolute bottom-16 group cursor-pointer p-[1.5px] rounded-2xl overflow-hidden shadow-2xl shadow-rose-200/20"
       >
-        <span className="font-sans text-[10px] uppercase tracking-[0.5em] text-slate-400 group-hover:text-rose-400 transition-colors animate-shimmer bg-gradient-to-r from-slate-400 via-rose-300 to-slate-400 bg-[length:200%_auto] bg-clip-text text-transparent">
-          Toca para entrar
-        </span>
-        <div className="w-0 h-[1px] bg-rose-200 mx-auto group-hover:w-full transition-all duration-700 mt-1" />
+        {/* Border Beam Effect */}
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_280deg,#fb7185_360deg)] opacity-40 group-hover:opacity-100 transition-opacity"
+        />
+
+        {/* Button Content with Glass */}
+        <div className="relative px-10 py-4 glass rounded-[15px] bg-white/40 backdrop-blur-xl flex flex-col items-center justify-center">
+          <span className="font-sans text-[11px] uppercase tracking-[0.6em] text-slate-600 group-hover:text-rose-600 transition-colors animate-shimmer bg-gradient-to-r from-slate-600 via-rose-400 to-slate-600 bg-[length:200%_auto] bg-clip-text text-transparent font-bold">
+            Toca para entrar
+          </span>
+          <div className="w-0 h-[1px] bg-rose-400 mx-auto group-hover:w-full transition-all duration-700 mt-2 opacity-40" />
+        </div>
       </motion.button>
     </div>
   );

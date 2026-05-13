@@ -25,7 +25,7 @@ export default function WinModal({ prize, onClose }: WinModalProps) {
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(`¡Hola! Acabo de ganar "${prize.label}" en GS Estética Integral y me gustaría reclamar mi premio. Mi nombre es ${formData.name}.`);
-    window.location.href = `https://wa.me/541161546312?text=${text}`;
+    window.location.href = `https://wa.me/541156952200?text=${text}`;
   };
 
   return (
