@@ -3,6 +3,7 @@ import { motion, useAnimation, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { cn } from '@/src/lib/utils';
 import { Sparkles, Gift, Heart, Star, Sparkle, Zap, Flower, Scissors } from 'lucide-react';
+import { gsap } from 'gsap';
 
 const PRIZES = [
   { id: 0, label: 'Reflexología + limpieza de cutis + peeling ($35.000)', icon: Sparkles, color: '#fdf2f8', probability: 0.125 },
@@ -28,10 +29,36 @@ export default function GlassRoulette({ onWin }: GlassRouletteProps) {
   const [rotation, setRotation] = useState(0);
   const controls = useAnimation();
   const wheelRef = useRef<HTMLDivElement>(null);
+  const spinAudio = useRef<HTMLAudioElement | null>(null);
+  const winAudio = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    spinAudio.current = new Audio('/roulette.mp3');
+    // Si queremos que repita mientras gira
+    spinAudio.current.loop = true;
+    winAudio.current = new Audio('/win.mp3');
+  }, []);
 
   const spin = async () => {
     if (isSpinning) return;
     setIsSpinning(true);
+    
+    if (spinAudio.current) {
+      if ('preservesPitch' in spinAudio.current) {
+        (spinAudio.current as any).preservesPitch = false;
+      }
+      spinAudio.current.currentTime = 0;
+      spinAudio.current.volume = 1;
+      spinAudio.current.playbackRate = 2.0;
+      spinAudio.current.play().catch(e => console.log("Audio play failed:", e));
+      
+      gsap.to(spinAudio.current, {
+        playbackRate: 0.5,
+        volume: 0.1,
+        duration: 8,
+        ease: "power2.out"
+      });
+    }
 
     // Weighted selection logic
     const totalWeight = PRIZES.reduce((acc, p) => acc + p.probability, 0);
@@ -69,6 +96,15 @@ export default function GlassRoulette({ onWin }: GlassRouletteProps) {
 
     setRotation(finalRotation % 360);
     setIsSpinning(false);
+    
+    if (spinAudio.current) {
+      gsap.killTweensOf(spinAudio.current);
+      spinAudio.current.pause();
+    }
+    if (winAudio.current) {
+      winAudio.current.currentTime = 0;
+      winAudio.current.play().catch(e => console.log("Audio play failed:", e));
+    }
     
     // Trigger confetti
     confetti({
